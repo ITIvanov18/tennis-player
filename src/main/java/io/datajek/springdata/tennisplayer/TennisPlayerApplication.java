@@ -25,16 +25,19 @@ public class TennisPlayerApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 
 		logger.info("Inserting Player 2: {}", dao.insertPlayer(
-				new Player(2, "Kalata", "Bulgarian",
+				new Player(2, "Rodger Federer", "Bulgarian",
 						new Date(System.currentTimeMillis()),
 						18)));
 
 		logger.info("Updating Player with Id 2: {}", dao.updatePlayer(
-				new Player(2, "Ilko", "England",
+				new Player(2, "Andy Mury", "England",
 						Date.valueOf("2000-10-01"), 18)));
 
 		logger.info("Deleting Player with Id 2: {}", dao.deletePlayerById(2));
 
 		logger.info("All Players Data: {}", dao.getAllPlayers());
+		dao.createTournamentTable();
+
+		logger.info("French Players: {}", dao.getPlayerByNationality("France") );
 	}
 }
